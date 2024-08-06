@@ -2,8 +2,8 @@ from weather_module import get_current_weather
 import telebot
 
 
-#API_TOKEN = '7278848607:AAG6PS3r_eg_xBtRRBC3Wp1czzMLRSHSBmw'
-#bot = telebot.TeleBot(API_TOKEN)
+API_TOKEN = '7278848607:AAG6PS3r_eg_xBtRRBC3Wp1czzMLRSHSBmw'
+bot = telebot.TeleBot(API_TOKEN)
 
 
 # Handle '/start' and '/help'
@@ -11,7 +11,7 @@ import telebot
 def send_welcome(message):
     bot.reply_to(message, """\
 Привет, я turueee_bot, я сообщаю текущуюю температуру.
-Введите координаты без запятых через пробела.\
+Введите свои географические координаты без запятых через пробел.\
 """)
 
 
