@@ -1,6 +1,5 @@
 import telebot
 from telebot import types
-import config
 
 from const import API_TOKEN
 from weather_module import get_current_weather
