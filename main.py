@@ -2,7 +2,7 @@ from weather_module import get_current_weather
 from value_module import value_moneys
 import telebot
 
-API_TOKEN = '7278848607:AAG6PS3r_eg_xBtRRBC3Wp1czzMLRSHSBmw'
+API_TOKEN = ''
 bot = telebot.TeleBot(API_TOKEN)
 
 
@@ -22,6 +22,8 @@ def send_welcome(message):
 def weather_message(message):
     bot.reply_to(message, 'Введите через пробел свои географические координаты')
     bot.register_next_step_handler(message, weather_me)
+
+
 def weather_me(message):
     try:
         s, r = map(float, message.text.split())
@@ -40,6 +42,7 @@ def value_message(message):
     bot.reply_to(message,
                  'Введите через пробел сумму, которую хотите перевести в другую валюту, код валюты, которую хотите перевести, и код валюты, в которую нужно перевести данную сумму.')
     bot.register_next_step_handler(message, value_me)
+
 
 def value_me(message):
     try:
