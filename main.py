@@ -35,12 +35,24 @@ def command(message):
 
 
 def weather_me(message):
-    bot.reply_to(message, get_current_weather(message.text))
+    if message.text == '/start':
+        send_welcome(message)
+    elif message.text == 'Погода' or message.text == 'Конвертер валют':
+        command(message)
+    else:
+        bot.reply_to(message, get_current_weather(message.text))
+        bot.register_next_step_handler(message, weather_me)
 
 
 def value_me(message):
-    sum_money, Charcode1, Charcode2 = message.text.split()
-    bot.reply_to(message, value_moneys(sum_money, Charcode1, Charcode2))
+    if message.text == '/start':
+        send_welcome(message)
+    elif message.text == 'Погода' or message.text == 'Конвертер валют':
+        command(message)
+    else:
+        sum_money, Charcode1, Charcode2 = message.text.split()
+        bot.reply_to(message, value_moneys(sum_money, Charcode1, Charcode2))
+        bot.register_next_step_handler(message, value_me)
 
 
 bot.infinity_polling()

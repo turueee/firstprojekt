@@ -1,9 +1,18 @@
 import requests
 import json
 import datetime
+from dadata import Dadata
+from const import TOKEN, SECRET
 
 
-def get_current_weather(latitude, longitude):
+def get_address_coordinate(address):
+    dadata = Dadata(TOKEN, SECRET)
+    result = dadata.clean("address", address)
+    return result['geo_lat'], result['geo_lon']
+
+
+def get_current_weather(address):
+    latitude, longitude = get_address_coordinate(address)
     response = requests.get(
         "https://api.open-meteo.com/v1/forecast",
         params={
